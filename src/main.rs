@@ -48,6 +48,22 @@ fn find_more_than_half_array_index_approach(nums: &Vec<i32>) -> i32 {
     return max_index as i32;
 }
 
+fn find_more_than_half_array_index_approach_iter_max(nums: &Vec<i32>) -> i32 {
+    let mut counts = [0; 100];
+
+    for x in nums {
+        counts[*x as usize] += 1;
+    }
+
+    let index = counts
+        .iter()
+        .enumerate()
+        .max_by(|(_, a), (_, b)| a.cmp(b))
+        .map(|(index, _)| index);
+
+    return index.unwrap() as i32;
+}
+
 fn bench_func_once<T>(op: &dyn Fn(&Vec<i32>) -> T, reps: i64, nums: &Vec<i32>) -> Duration {
     let now = Instant::now();
 
@@ -68,11 +84,12 @@ fn bench_func<T>(op: &dyn Fn(&Vec<i32>) -> T, reps: i64, title: &str, nums: Vec<
     }
 
     println!(
-        " {}:\tμ: {} nanos, σ: {}, n: {}",
+        " {}:\tμ: {} nanos, σ: {}, n: {}, reps: {}",
         title,
         mean(&scores),
         population_standard_deviation(&scores),
-        30
+        30,
+        reps
     );
 }
 
@@ -111,6 +128,13 @@ fn main() {
         &find_more_than_half_array_index_approach,
         100,
         "find_more_than_half_better_approach",
+        nums.clone(),
+    );
+
+    bench_func(
+        &find_more_than_half_array_index_approach_iter_max,
+        100,
+        "find_more_than_half_better_approach_iter_max",
         nums,
     );
 }
