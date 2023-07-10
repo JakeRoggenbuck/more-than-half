@@ -64,6 +64,28 @@ fn find_more_than_half_array_index_approach_iter_max(nums: &Vec<i32>) -> i32 {
     return index.unwrap() as i32;
 }
 
+fn find_more_than_half_probability_approach(nums: &Vec<i32>) -> i32 {
+    let mut counts = [0; 100];
+
+
+    // go through half the values
+    for x in nums.iter().step_by(100) {
+        counts[*x as usize] += 1;
+    }
+
+    let mut max = 0;
+    let mut max_index = 0;
+
+    for (n, k) in counts.iter().enumerate() {
+        if k > &max {
+            max = *k;
+            max_index = n;
+        }
+    }
+
+    return max_index as i32;
+}
+
 fn bench_func_once<T>(op: &dyn Fn(&Vec<i32>) -> T, reps: i64, nums: &Vec<i32>) -> Duration {
     let now = Instant::now();
 
@@ -135,6 +157,13 @@ fn main() {
         &find_more_than_half_array_index_approach_iter_max,
         100,
         "find_more_than_half_array_index_approach_iter_max",
+        nums.clone(),
+    );
+
+    bench_func(
+        &find_more_than_half_probability_approach,
+        100,
+        "find_more_than_half_probability_approach",
         nums,
     );
 }
