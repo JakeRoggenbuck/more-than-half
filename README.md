@@ -2,7 +2,7 @@
 
 ## Results
 ````
-find_more_than_half_naive_approach:	μ: 368530193.06666666 nanos, σ: 68450878.47450776, n: 30, reps: 100
-find_more_than_half_better_approach:	μ: 9163473.333333334 nanos, σ: 1707085.837613686, n: 30, reps: 100
-find_more_than_half_better_approach_iter_max:	μ: 9306689.266666668 nanos, σ: 1735327.6699042541, n: 30, reps: 100
+find_more_than_half_naive_hashmap_approach:	μ: 376996919.6666667 nanos, σ: 70099869.02614205, n: 30, reps: 100
+find_more_than_half_array_index_approach:	μ: 9318334.666666666 nanos, σ: 1740842.3474242254, n: 30, reps: 100
+find_more_than_half_array_index_approach_iter_max:	μ: 9414384.8 nanos, σ: 1754174.8571647094, n: 30, reps: 100
 ```

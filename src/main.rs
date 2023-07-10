@@ -120,21 +120,21 @@ fn main() {
     bench_func(
         &find_more_than_half_naive_hashmap_approach,
         100,
-        "find_more_than_half_naive_approach",
+        "find_more_than_half_naive_hashmap_approach",
         nums.clone(),
     );
 
     bench_func(
         &find_more_than_half_array_index_approach,
         100,
-        "find_more_than_half_better_approach",
+        "find_more_than_half_array_index_approach",
         nums.clone(),
     );
 
     bench_func(
         &find_more_than_half_array_index_approach_iter_max,
         100,
-        "find_more_than_half_better_approach_iter_max",
+        "find_more_than_half_array_index_approach_iter_max",
         nums,
     );
 }
